@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>List of movies to watch by Natalia Migas - Pure Vanilla JavaScript</title>
+
+  <link href="css/main.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="wrapper col-md-6 col-md-offset-3 col-xs-12">
+        <h1>Movies to watch</h1>
+        <form class="form-horizontal search-movies" id="searchMovies">
+          <label for="search" class="sr-only">Search:</label>
+          <input type="text" placeholder="Search..." class="form-control search" id="search">
+        </form>
+        <form class="form-inline add-movie" id="addMovie">
+          <label for="add">Add movie:</label>
+          <div class="input-group">
+            <input type="text" class="form-control add" id="add" placeholder="Title...">
+            <span class="input-group-btn">
+              <button class="btn btn-default">Add</button>
+            </span>
+          </div>
+        </form>
+        <div class="option-bar">
+          <div class="sort">
+            <label for="sort">Sort: </label>
+            <select class="form-control sort" id="sort">
+              <option value="0">--</option>           
+              <option value="a-z">A-Z</option>
+              <option value="z-a">Z-A</option>
+            </select>
+          </div>
+          <button class="clear">Clear all</button>
+        </div>
+        <ul class="movies" id="movies">
+          <li draggable="true" class="movie">
+            <img src="img/dots.png" alt="drag & drop" class="drag-icon">
+            <span class="title">Schindler's List</span>
+            <button class="delete"></button>
+          </li>
+          <li draggable="true" class="movie">
+            <img src="img/dots.png" alt="drag & drop" class="drag-icon">
+            <span class="title">Eternal Sunshine of the Spotless Mind</span>
+            <button class="delete"></button>
+          </li>
+          <li draggable="true" class="movie">
+            <img src="img/dots.png" alt="drag & drop" class="drag-icon">
+            <span class="title">A Beautiful Mind</span>
+            <button class="delete"></button>
+          </li>
+          <li draggable="true" class="movie">
+            <img src="img/dots.png" alt="drag & drop" class="drag-icon">
+            <span class="title">Shutter Island</span>
+            <button class="delete"></button>
+          </li>
+          <li draggable="true" class="movie">
+            <img src="img/dots.png" alt="drag & drop" class="drag-icon">
+            <span class="title">Fight Club</span>
+            <button class="delete"></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- row -->
+  </div>
+  <!-- container -->
+
+  <!--<script src="js/dragndrop.js"></script>-->
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>

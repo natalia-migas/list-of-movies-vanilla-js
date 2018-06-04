@@ -1,0 +1,21 @@
+//fonts
+$font1: 'Open Sans',
+sans-serif;
+$fa: 'FontAwesome';
+
+
+//colors
+$bgColor: #222;
+$bgColor2: #333;
+$fontColor: #fff;
+$linkColor: #3200d8;
+$hoverColor: #2700a7;
+
+//mixins
+@mixin transition($type: all, $duration:0.3s, $ease:ease-out) {
+  -webkit-transition: $type $duration $ease;
+  -moz-transition: $type $duration $ease;
+  -o-transition: $type $duration $ease;
+  transition: $type $duration $ease;
+}
+

@@ -1,0 +1,287 @@
+@import "_bootstrap";
+@import "_variables";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: $bgColor;
+  color: $fontColor;
+  font-family: $font1;
+  font-size: 14px;
+  font-size: 1.4rem;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -ms-overflow-style: scrollbar;
+}
+
+a,
+.btn-default {
+  color: $linkColor;
+  @include transition;
+  outline: none !important;
+  font-weight: bold;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $hoverColor;
+  }
+}
+
+.btn-default {
+  background-color: $linkColor;
+  color: #fff;
+  border-radius: 0;
+  border: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  height: 40px;
+  &:hover,
+  &:focus,
+  &:active,
+  &:active:focus {
+    background-color: $hoverColor;
+    color: #fff;
+  }
+}
+
+.wrapper {
+  background-color: $bgColor2;
+  padding: 20px 40px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  @media (max-width: $screen-xs-max) {
+    padding: 20px 25px;
+  }
+}
+
+h1 {
+  font-size: 50px;
+  font-size: 5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 50px 0;
+  @media (max-width: $screen-xs-max) {
+    font-size: 35px;
+    font-size: 3.5rem;
+    line-height: 45px;
+  }
+}
+
+form {
+  &.search-movies {
+    max-width: 400px;
+    margin: 0 auto 30px;    
+  }
+  &.add-movie {
+    max-width: 400px;
+    margin: 0 auto;
+    label {
+      float: left;
+      width: 25%;
+      line-height: 40px;
+      @media (max-width: $screen-xs-max) {
+        float: none;
+        width: 100%;
+      }
+    }
+    .input-group {
+      width: 75%;
+      @media (max-width: $screen-xs-max) {
+        width: 100%;
+      }
+    }
+    input.add {
+      border-right: 0;
+    }
+    .btn-default {
+      padding: 0 30px;
+      width: 100%;
+      border: 2px solid #626262;
+      border-left: 0;
+    }
+  }
+  input.form-control {
+    height: 40px;
+    border-radius: 0;
+    background-color: $bgColor2;
+    border: 2px solid #626262;
+    opacity: 0.8;
+    color: #fff;
+    &:focus {
+      box-shadow: none;
+      border-color: #848484;
+      background-color: $bgColor;
+      opacity: 1;
+    }
+  }
+} // form
+.option-bar {
+  margin-top: 30px;
+  text-align: right;
+  padding: 20px 0;
+  border-top: 1px solid #626262;
+  border-bottom: 1px solid #626262;
+  .sort {
+    float: left;
+    @media (max-width: $screen-xs-max) {
+      float: none;
+    }
+    label {
+      float: left;
+      line-height: 40px;
+      margin-right: 20px;
+    }
+    select {
+      width: 150px;
+      height: 40px;
+      border-radius: 0;
+      background-color: $bgColor2;
+      border: 2px solid #626262;
+      opacity: 0.8;
+      color: #989898;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: url(../img/select.png) no-repeat 95% center;
+      @media (max-width: $screen-xs-max) {
+        width: 200px;
+        float: right;
+      }
+      &:focus {
+        box-shadow: none;
+        border-color: #848484;
+        background-color: $bgColor;
+        opacity: 1;
+      }
+    }
+  }
+  .clear {
+    cursor: pointer;
+    position: relative;
+    padding-right: 30px;
+    @include transition;
+    line-height: 40px;
+    background-color: transparent;
+    border: 0;
+    @media (max-width: $screen-xs-max) {
+      margin-top: 20px;
+      display: inline-block;
+      line-height: normal;
+      clear: both;
+    }
+    &:after {
+      position: absolute;
+      content: '';
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 20px;
+      background: url(../img/garbage.png) no-repeat center;
+      @include transition;
+    }
+    &:hover, &:focus {
+      color: red;
+      outline: none;
+      &:after {
+        background: url(../img/garbage-hover.png) no-repeat center;
+      }
+    }
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 20px 0;
+  &.movies {
+    li {
+      font-size: 14px;
+      font-size: 1.4rem;
+      font-weight: normal;
+      text-transform: none;
+      padding: 20px 0;
+      letter-spacing: 0;
+      position: relative;
+      @include transition;
+      border-top: 2px solid transparent;
+      @media (max-width: $screen-xs-max) {
+        padding: 30px 0;
+      }
+      &:hover {
+        .delete {
+          opacity: 1;
+        }
+      }
+      &.over {
+        border-top: 2px solid #939393;
+      }
+      &.drag-elem {
+        background-color: #454545;
+      }
+      img {
+        margin-right: 20px;
+        opacity: 0.5;
+        @include transition;
+        cursor: move;
+        @media (max-width: $screen-xs-max) {
+          float: left;        
+        }
+        &:hover {
+          opacity: 1;
+        }
+      }
+      .title {
+        @media (max-width: $screen-xs-max) {
+          max-width: 200px;
+          display: inline-block;
+        }
+      }
+      .delete {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 20px;
+        background: url(../img/garbage.png) no-repeat center;
+        cursor: pointer;
+        opacity: 0;
+        border: 0;
+        @include transition;
+        @media (max-width: $screen-xs-max) {
+          opacity: 1;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          height: 100%;
+          width: 20px;
+          background: url(../img/garbage-hover.png) no-repeat center;
+          opacity: 0;
+          @include transition;
+          top: 0;
+          left: 0;
+        }
+        &:hover, &:focus {
+          outline: none;
+          &:after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+} // ul
+// /*992 - 1199 md*/
+// @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+// }
+// /*768 - 991 sm*/
+// @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+// }
+// /*767 and less xs*/
+// @media (max-width: $screen-xs-max) {
+// }
