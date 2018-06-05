@@ -6091,6 +6091,7 @@ ul {
         top: 0;
         left: 0; }
       ul.movies li .delete:hover, ul.movies li .delete:focus {
-        outline: none; }
+        outline: none;
+        opacity: 1; }
         ul.movies li .delete:hover:after, ul.movies li .delete:focus:after {
           opacity: 1; }

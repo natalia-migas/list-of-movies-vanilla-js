@@ -1,9 +1,13 @@
-const moviesList = document.querySelector('.movies');
-const deleteBtn = document.querySelectorAll('.movies li .delete');
-const allMovies = document.querySelectorAll('.movies li');
-const clearBtn = document.querySelector('.clear');
-const formAddMovie = document.querySelector('.add-movie');
-const search = document.querySelector('.search');
+'use strict';
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var moviesList = document.querySelector('.movies');
+var deleteBtn = document.querySelectorAll('.movies li .delete');
+var allMovies = document.querySelectorAll('.movies li');
+var clearBtn = document.querySelector('.clear');
+var formAddMovie = document.querySelector('.add-movie');
+var search = document.querySelector('.search');
 
 function removeItem(itemToRemove) {
   itemToRemove.parentNode.removeChild(itemToRemove);
@@ -15,10 +19,9 @@ moviesList.addEventListener('click', function (e) {
   }
 });
 
-
 function clearAll() {
   clearBtn.addEventListener('click', function () {
-    const allMovies = document.querySelectorAll('.movies li');
+    var allMovies = document.querySelectorAll('.movies li');
     Array.from(allMovies).forEach(function (el) {
       removeItem(el);
     });
@@ -29,16 +32,16 @@ clearAll();
 
 formAddMovie.addEventListener('submit', function (e) {
   e.preventDefault();
-  const newTitle = formAddMovie.querySelector('input[type="text"]').value;
+  var newTitle = formAddMovie.querySelector('input[type="text"]').value;
 
-  const li = document.createElement('li');
+  var li = document.createElement('li');
   li.setAttribute('class', 'movie');
   li.setAttribute('draggable', 'true');
-  const newIcon = document.createElement('img');
+  var newIcon = document.createElement('img');
   newIcon.setAttribute('src', 'img/dots.png');
   newIcon.setAttribute('alt', 'drag & drop');
-  const newMovieTitle = document.createElement('span');
-  const newDeleteBtn = document.createElement('button');
+  var newMovieTitle = document.createElement('span');
+  var newDeleteBtn = document.createElement('button');
 
   newMovieTitle.textContent = newTitle;
 
@@ -52,43 +55,40 @@ formAddMovie.addEventListener('submit', function (e) {
   addDnDHandlers(li);
 
   document.getElementById('add').value = "";
-
 });
 
 search.addEventListener('input', function (e) {
-  const phrase = e.target.value.toLowerCase();
-  const allMovies = [...moviesList.querySelectorAll('li')];
+  var phrase = e.target.value.toLowerCase();
+  var allMovies = [].concat(_toConsumableArray(moviesList.querySelectorAll('li')));
   allMovies.forEach(function (movie) {
-    const title = movie.querySelector('.title').textContent;
+    var title = movie.querySelector('.title').textContent;
     if (title.toLowerCase().indexOf(phrase) != -1) {
       movie.style.display = 'block';
     } else {
       movie.style.display = 'none';
     }
-  })
+  });
 });
 
 function sort(moviesList, sortFn) {
   var allMovies = document.querySelectorAll('.movies li');
-  Array.from(allMovies).map((movie) => {
-      return moviesList.removeChild(movie);
-    })
-    .sort(sortFn)
-    .forEach((movie) => {
-      moviesList.appendChild(movie);
-    });
+  Array.from(allMovies).map(function (movie) {
+    return moviesList.removeChild(movie);
+  }).sort(sortFn).forEach(function (movie) {
+    moviesList.appendChild(movie);
+  });
 }
 
 function sortMovies(e) {
   var collator = new Intl.Collator();
   switch (e.target.value) {
     case 'a-z':
-      sort(moviesList, (prev, next) => {
+      sort(moviesList, function (prev, next) {
         return collator.compare(prev.querySelector('.title').textContent, next.querySelector('.title').textContent);
       });
       break;
     case 'z-a':
-      sort(moviesList, (prev, next) => {
+      sort(moviesList, function (prev, next) {
         return collator.compare(next.querySelector('.title').textContent, prev.querySelector('.title').textContent);
       });
       break;
@@ -96,7 +96,6 @@ function sortMovies(e) {
 }
 
 document.addEventListener('change', sortMovies);
-
 
 var dragSrcEl = null;
 
@@ -136,7 +135,6 @@ function handleDrop(e) {
     this.insertAdjacentHTML('beforebegin', dropHTML);
     var dropElem = this.previousSibling;
     addDnDHandlers(dropElem);
-
   }
   this.classList.remove('over');
   this.classList.remove('drag-elem');
@@ -154,7 +152,6 @@ function addDnDHandlers(elem) {
   elem.addEventListener('dragleave', handleDragLeave, false);
   elem.addEventListener('drop', handleDrop, false);
   elem.addEventListener('dragend', handleDragEnd, false);
-
 }
 
 var rows = document.querySelectorAll('#movies .movie');
